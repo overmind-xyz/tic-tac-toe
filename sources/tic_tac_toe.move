@@ -103,7 +103,7 @@ module overmind::tic_tac_toe {
 		// The current spaces of the board - None: empty, 1: player one, 2: player two
         // NOTE: the first index is the row, the second index is the column
 		spaces: vector<vector<Option<u8>>>,
-		// result of game - 1: player one won, 2: player two won, 3: tie, 4: game canceled, 
+		// result of game - 0: player one won, 1: player two won, 2: tie, 3: game expired, 
         //                  None: Game in progress
 		result: Option<u8> 
     }   
@@ -215,8 +215,8 @@ module overmind::tic_tac_toe {
         //      - Set current turn to PLAYER_ONE
         //      - Set expiration_timestamp_seconds to the current timestamp plus DURATION_GAME_START
         //      - Set spaces to a 3 by 3 two dimensional vector where each space is an empty 
-        //          option<u64>
-        //      - Set result to an empty option<u64>
+        //          option<u8>
+        //      - Set result to an empty option<u8>
 
         // TODO: Emit a GameCreatedEvent
         
@@ -518,7 +518,7 @@ module overmind::tic_tac_toe {
     }
 
     inline fun check_if_prize_is_unclaimed(result: &Option<u8>) {
-        // TODO: Ensure the result is none. If it is, abort with code: EPrizeAlreadyClaimed
+        // TODO: Ensure the result is none. If it is not, abort with code: EPrizeAlreadyClaimed
         
     }
 
